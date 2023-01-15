@@ -17,7 +17,8 @@
         "CXX_FLAGS": ""
     },
     "asm-compiler": {
-        "ASM_FLAGS": ""
+        "ASM_FLAGS": "",
+        "$use":"asm-auto"
     },
     "linker": {
         "output-format": "elf",

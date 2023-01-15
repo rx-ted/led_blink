@@ -1,0 +1,7 @@
+probes:
+    0001A0000002:
+        target_override: n32g4fr
+        test_binary: ./build/LED_BLINK.bin
+        
+    pack:
+       - Nationstech.N32G4FR_DFP.1.0.4.pack

@@ -2,7 +2,7 @@
  * @Author: rx-ted
  * @Date: 2023-01-14 10:46:12
  * @LastEditors: rx-ted
- * @LastEditTime: 2023-01-14 10:48:49
+ * @LastEditTime: 2023-01-15 12:07:06
  */
 /*****************************************************************************
  * Copyright (c) 2019, Nations Technologies Inc.
@@ -66,6 +66,7 @@ int main(void)
     }
 }
 
+//.pack/Nationstech/N32G4FR_DFP.1.0.4/svd/N32G4FR.svd
 /**
  * @brief  Configures GPIO.
  */

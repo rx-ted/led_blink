@@ -135,7 +135,7 @@
     ]
   },
   "outDir": "build",
-  "deviceName": "N32G4FRREL7",
+  "deviceName": "N32G4FRMEL7",
   "packDir": ".pack/Nationstech/N32G4FR_DFP.1.0.4",
   "miscInfo": {
     "uid": "981350f503a4244649a51b990e660b0f"
@@ -145,26 +145,49 @@
       "excludeList": [
         "<virtual_root>/STARTUP/startup_n32g45x_gcc.s",
         "<virtual_root>/BSP/log_gcc.c",
-        "<virtual_root>/STARTUP/startup_n32g4fr.s"
+        "<virtual_root>/STARTUP/startup_n32g4fr_gcc.s"
       ],
-      "toolchain": "GCC",
+      "toolchain": "AC6",
       "compileConfig": {
         "cpuType": "Cortex-M4",
         "floatingPointHardware": "single",
-        "scatterFilePath": "D:\\Users\\rx-ted\\Desktop\\LED_BLINK\\firmware\\CMSIS\\device\\n32g4fr_flash.ld",
-        "useCustomScatterFile": true,
+        "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
         "storageLayout": {
-          "RAM": [],
-          "ROM": []
+          "RAM": [
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x24000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x08000000",
+                "size": "0x80000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            }
+          ]
         },
         "options": "null"
       },
-      "uploader": "OpenOCD",
+      "uploader": "pyOCD",
       "uploadConfig": {
         "bin": "",
-        "target": "stm32f1x",
-        "interface": "stlink",
-        "baseAddr": "0x08000000"
+        "targetName": "n32g4frmel7",
+        "baseAddr": "0x08000000",
+        "speed": "4M",
+        "config": ".eide/n32g4fr_armcc.pyocd.yaml"
       },
       "uploadConfigMap": {
         "JLink": {
@@ -189,6 +212,23 @@
           "bin": "",
           "commandLine": "",
           "eraseChipCommand": ""
+        },
+        "OpenOCD": {
+          "bin": "",
+          "target": "stm32f1x",
+          "interface": "stlink",
+          "baseAddr": "0x08000000"
+        },
+        "STLink": {
+          "bin": "",
+          "proType": "SWD",
+          "resetMode": "default",
+          "runAfterProgram": true,
+          "speed": 4000,
+          "address": "0x8000000",
+          "elFile": "None",
+          "optionBytes": ".eide/n32g4fr_armcc.st.option.bytes.ini",
+          "otherCmds": ""
         }
       },
       "custom_dep": {
@@ -204,8 +244,8 @@
         "libList": [],
         "sourceDirList": [],
         "defineList": [
-          "USE_STDPERIPH_DRIVER",
-          "N32G4FR"
+          "N32G4FR",
+          "USE_STDPERIPH_DRIVER"
         ]
       }
     },
